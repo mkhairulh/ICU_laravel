@@ -1,4 +1,19 @@
-<!DOCTYPE html>
+@extends('layouts.main')
+@section('title', 'Home')
+@section('content') 
+    @php
+    ($_name = $name ?? "team");
+    @endphp
+
+    @if ($_name ==  "abu")
+    <h2> YOU ARE BANNED</h2> 
+    @else
+    <h2> Hello {{$_name ?? "team"}}! </h2> 
+    @endif   
+    <button type="button" class="btn btn-primary">Click Me</button>
+@endsection
+
+{{-- <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
@@ -7,6 +22,16 @@
     <title>{{config('app.name')}}</title>
 </head>
 <body>
-   <h2> Hello {{$nama ?? "team"}}! </h2>
+
+    @php
+        ($_name = $name ?? "team");
+    @endphp
+
+    @if ($_name ==  "abu")
+    <h2> YOU ARE BANNED</h2> 
+    @else
+    <h2> Hello {{$_name ?? "team"}}! </h2> 
+    @endif
+   
 </body>
-</html>
+</html> --}}

@@ -18,12 +18,12 @@ Route::get('/', function () {
 });
 
 Route::get('/home/{name}', function ($name) {
-    return view('home',[ 'nama'=>$name]);
+    return view('home',[ 'name'=>$name]);
 });
 
 Route::get('/home', function () {
     return view('home');
-});
+})->name('home');
 
 Route::get('/auth/signin', function () {
     return view('auth.signin');
@@ -67,3 +67,7 @@ Route::name('job')->prefix('job')->group(function () {
     })->name('.description');
     
 });
+
+Route::get('/about', function () {
+    return view('about');
+})->name('about');
