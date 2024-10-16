@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\AuthController;
 
 /*
 |--------------------------------------------------------------------------
@@ -73,3 +74,10 @@ Route::get('/about', function () {
 })->name('about');
 
 require __DIR__.'/feed/web.php';
+
+Route::get('/signup', function () {
+    return view('pages.auth.signup');
+})->name('signup');
+
+Route::get('/signup',[AuthController::class, 'signup'])->name('auth.signup');
+Route::get('/signin',[AuthController::class, 'signin'])->name('auth.signin');

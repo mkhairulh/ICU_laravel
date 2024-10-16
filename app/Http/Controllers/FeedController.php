@@ -11,7 +11,9 @@ use Illuminate\Support\Facades\Log;
 class FeedController extends Controller
 {
     public function index() {
-        return view('pages.feed.index');
+        //$feeds = Feed::all();
+        $feeds = Feed::paginate(3);
+        return view('pages.feed.index', compact('feeds'));
     }
 
     public function create() {
@@ -31,8 +33,18 @@ class FeedController extends Controller
         ]);
         $feed->update($validated_request);
         return redirect()->route('feeds');
+    }
 
-        //$feed->update($this->validateRequest($request));
-        //return redirect()->route('feeds')->with('success', 'Feed updated succesfully');
+    public function store(Request $request) {
+        $validated_request = $request->validate([
+            'title'=>'required | string |max:100 | min:3',
+            'description'=>'required | string | max:300' ,
+        ]);
+
+        $validated_request['user_id']=1;
+
+        Feed::create($validated_request);
+        return redirect()->route('feeds')->with('success','Feed created successfully');
+
     }
 }
