@@ -71,3 +71,5 @@ Route::name('job')->prefix('job')->group(function () {
 Route::get('/about', function () {
     return view('about');
 })->name('about');
+
+require __DIR__.'/feed/web.php';
