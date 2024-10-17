@@ -1,0 +1,6 @@
+POST https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash-latest:generateContent?key=AIzaSyD_g41Bf9q5QyzY9IDKajNlm0u4WEN1Huc HTTP/1.1
+content-type: application/json
+
+{
+    "contents":[{"parts":[{"text":"bilakah tarikh lahir perdana menteri malaysia ke 4?"}]}]
+}

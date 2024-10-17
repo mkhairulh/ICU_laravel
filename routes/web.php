@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\AiController;
 
 /*
 |--------------------------------------------------------------------------
@@ -87,3 +88,5 @@ Route::middleware('guest')->group(function(){
 
 
 Route::get('/auth/signout',[AuthController::class, 'signOut'])->name('auth.signout');
+
+Route::get('/ai/feed',[AiController::class,'generateAiPage'])->name('ai.feed');
