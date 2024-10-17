@@ -75,9 +75,15 @@ Route::get('/about', function () {
 
 require __DIR__.'/feed/web.php';
 
-Route::get('/signup', function () {
-    return view('pages.auth.signup');
-})->name('signup');
+// Route::get('/signup', function () {
+//     return view('pages.auth.signup');
+// })->name('signup');
+Route::middleware('guest')->group(function(){
+    Route::get('/signup',[AuthController::class, 'signup'])->name('auth.signup');
+    Route::get('/signin',[AuthController::class, 'signin'])->name('auth.signin');
+    Route::post('/store',[AuthController::class, 'storeUser'])->name('auth.store');
+    Route::post('/authenticate',[AuthController::class, 'authenticate'])->name('auth.authenticate');
+});
 
-Route::get('/signup',[AuthController::class, 'signup'])->name('auth.signup');
-Route::get('/signin',[AuthController::class, 'signin'])->name('auth.signin');
+
+Route::get('/auth/signout',[AuthController::class, 'signOut'])->name('auth.signout');
